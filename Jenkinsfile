@@ -45,14 +45,14 @@ pipeline {
 			}
 	}
 	
-		stage ("Container Creation") {
+		stage ("Building RPMs") {
 			steps {
 				sh label: '',
 				script: 'docker exec  contrail-developer-sandbox bash -c \'set -x; cd /root/contrail-dev-env; make sync; make fetch_packages; make setup; make dep; export SRCVER=r5.1; export BUILDTAG=1; make rpm; export CONTRAIL_CONTAINER_TAG="${CONTRAIL_VERSION}"; sed -i "/CONTRAIL_VERSION/d" common.env; export SB_BRANCH="${BRANCH}"; make containers; export SB_BRANCH="${BRANCH}"; make deployers\''
 			}
 	}
 	
-	stage ("Creating Hasb manifest") {
+		stage ("Creating Hasb manifest") {
 			steps {
 				sh label: '',
 				script: "docker exec  contrail-developer-sandbox bash -c \'set -x; cd /root/contrail; repo manifest -r -o /root/contrail-dev-env/manifest_"$(date +"%H:%M-%Y-%m-%d")".xml\'"
