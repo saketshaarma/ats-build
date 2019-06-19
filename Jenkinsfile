@@ -52,12 +52,5 @@ pipeline {
 			}
 	}
 	
-		stage ("Creating Hasb manifest") {
-			steps {
-				sh label: '',
-				script: "docker exec  contrail-developer-sandbox bash -c \'set -x; cd /root/contrail; repo manifest -r -o /root/contrail-dev-env/manifest_"$(date +"%H:%M-%Y-%m-%d")".xml\'"
-			}
-	}
-	
 	}
 }
