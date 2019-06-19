@@ -65,6 +65,8 @@ pipeline {
 				script: 'mkdir -p bitbucket'
 				dir ("bitbucket"){
 					git 'git@bitbucket.org:atsgen/ats-infra.git'
+					sh label: '',
+					script: 'cp ../manifest_"$(date +"%H:%M-%Y-%m-%d")".xml .; git add .; git commit -m "Adding generated manifest for $(date +"%H:%M-%Y-%m-%d")"; git push origin master'
 				}
 			}
 	}
