@@ -61,7 +61,6 @@ pipeline {
 	
 		stage ("Cloning Bit Bucket Repo") {
 			steps {
-				def BRANCH='master'
 				sh label: '',
 				script: 'mkdir -p bitbucket'
 				dir ("bitbucket"){
