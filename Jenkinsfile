@@ -15,15 +15,6 @@ pipeline {
 								}
                         }
         }
-        stage ("SandBox Creation") {
-                        steps {
-                                sh label: '',
-                                script: "cd ${BUILD_FOLDER}/container; \
-                                cp ../tpc.repo.template tpc.repo; \
-                                docker build --build-arg BRANCH=${BRANCH} \
-                                --no-cache --tag ${image_name}:${image_tag} ."
-                        }
-        }
                 stage ("Container Creation") {
                         steps {
                                 sh label: '',
