@@ -30,4 +30,5 @@ pipeline {
                                 script: "cd ${WORKSPACE}/${BUILD_FOLDER}; ./startup.sh -i ${image_name} -t ${image_tag}"
                         }
         }
+	}
 }
